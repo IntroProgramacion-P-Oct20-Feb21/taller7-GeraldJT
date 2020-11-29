@@ -1,33 +1,24 @@
 /*
- * * Generar una solución que permita ingresar jugadores de fútbol; por cada jugador se debe solicitar:
-	-	Nombre el jugador
-	- 	Posición en el campo de juego
-	- 	Edad
-	- 	Estatura
-	
-    El ciclo de ingreso de información deberá terminar cuando el usuario lo decida.
-    Se debe imprimer el siguiente reporte (usar una cadena de acumulación):
-
-    > Listado de Jugadores
-    1. Alexander Dominguez -Arquero-, edad 32, estatura 1.95
-    2. Xavier Arreaga -Defensa-, edad 24, estatura 1.85
-    3. Moisés Caicedo -Mediocentro-, edad 19, estatura 1.88
-    4. Ángel Mena -Delantero-, edad 32, estatura 1.75
-    5. Michael Estrada -Delantero-, edad 27, estatura 1.93
-    Promedio de edades:  26.8
-    Promedio de estaturas: 1.87
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package ejemplos07;
+package problema1;
 
 import java.util.Locale;
 import java.util.Scanner;
 
 /**
  *
- * @author reroes
+ * @author USUARIO PC
  */
-public class Ejemplo04 {
+public class Problema1 {
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
+        // TODO code application logic here
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
         String cadenaReporte = "";
@@ -43,10 +34,11 @@ public class Ejemplo04 {
         // contador para saber el número de iteraciones
         int contadorIteraciones = 0;
         // variables para promedio
-        double promedioEdad;
+        int promedioEdad;
         double promedioEstatura;
         cadenaReporte = String.format("%s%s\n", cadenaReporte, 
                 "Listado de Jugadores");
+        String cadenaEdad="";
         
         do {
             System.out.println("Ingrese el nombre del Jugador: ");
@@ -74,7 +66,7 @@ public class Ejemplo04 {
                     posicionCampo,
                     edad,
                     estatura);
-            
+            cadenaEdad= String.format("%s\n%d",cadenaEdad, edad);
             entrada.nextLine();
             System.out.println("Desea salir del ciclo; digite: si");
             salir = entrada.nextLine();
@@ -83,16 +75,16 @@ public class Ejemplo04 {
             }
         } while (bandera);
         
-        promedioEdad = (double)sumaEdades/contadorIteraciones;
+        promedioEdad = sumaEdades/contadorIteraciones;
         promedioEstatura = sumaEstaturas/contadorIteraciones;
         // Promedio de edades:  ?
-        cadenaReporte = String.format("%sPromedio de edades: %.2f\n", 
-                cadenaReporte, promedioEdad);
+        cadenaReporte = String.format("%sListado edades:%s\n"+"Promedio de edades: %d\n", 
+                cadenaReporte,cadenaEdad, promedioEdad);
         // Promedio de estaturas: ?
         cadenaReporte = String.format("%sPromedio de estaturas: %.2f\n", 
                 cadenaReporte, promedioEstatura);
         // presentación de cadena final
         System.out.printf("%s\n", cadenaReporte);
-        
     }
+    
 }
